@@ -13,94 +13,43 @@
   <script type="text/javascript" src="js/jquery.particleground.js"></script>
   <script type="text/javascript" src="js/demo.js"></script>
 </head>
-<script>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 
-        var header = document.getElementById('header');
-        var subheader = document.getElementById('subheader');
+body{
+  padding: 40px;
+  background-color: #c13b17;  
+}
 
-        var typewriter = new Typewriter(header, {
-            loop: false
-        });
+p {
+  border-right: solid 5px rgba(255,255,255,.75);
+  white-space: nowrap;
+  overflow: hidden;    
+  font-family: 'Source Code Pro', monospace;  
+  font-size: 28px;
+  color: rgba(255,255,255,.70);
+}
 
-        var typewriter2 = new Typewriter(subheader, {
-            loop: false
-        });
+/* Animation */
+p {
+  animation: animated-text 4s linear 1s 1 normal both,
+             animated-cursor 600ms linear infinite;
+}
 
-        let header1 = "Hey there, I'm Cyris.";
-        let header2 = "I'm a software developer.";
-        let header3 = "maker.";
-        let header4 = "n infosec enthusiast."
-        let header5 = "Check out my work below.";
+/* text animation */
 
-        let subHeader1 = "Nice to meet you.";
-        let subHeader2 = "Javascript, NodeJS, HTML, CSS, Email and Digital Marketing.";
-        let subHeader3 = "3D Printing, Raspberry Pi, Arduino, ESP8266.";
-        let subHeader4 = "Learning how to protect myself and others.";
-        let subHeader5 = "Check out my work, and blog.";
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: 456px;}
+}
 
-        let typingSpeed = 10;
-        let deleteSpeed = 1;
-        let pauseDelay = 3000;
+/* cursor animations */
 
-        function subtyping(string) {
-            typewriter2
-                .changeDelay(typingSpeed)
-                .typeString(string)
-                .start();
-        }
-
-        function subdelete() {
-            typewriter2
-                .deleteAll(1)
-                .start();
-        }
-
-        function finaltype() {
-            jQuery('#subheader').hide();
-            jQuery('#headerSocial').fadeIn();
-        }
-
-        function typing() {
-
-            typewriter
-                .changeDelay(typingSpeed)
-                .changeDeleteSpeed(deleteSpeed)
-
-                .typeString(header1)
-                .callFunction(function () { subtyping(subHeader1) })
-                .pauseFor(pauseDelay)
-                .callFunction(function () { subdelete() })
-                .pauseFor(subHeader1.length * deleteSpeed)
-                .deleteChars(21)
-
-                .typeString(header2)
-                .callFunction(function () { subtyping(subHeader2) })
-                .pauseFor(pauseDelay)
-                .callFunction(function () { subdelete() })
-                .pauseFor(subHeader2.length * deleteSpeed)
-                .deleteChars(19)
-
-                .typeString(header3)
-                .callFunction(function () { subtyping(subHeader3) })
-                .pauseFor(pauseDelay)
-                .callFunction(function () { subdelete() })
-                .pauseFor(subHeader3.length * deleteSpeed)
-                .deleteChars(7)
-
-                .typeString(header4)
-                .callFunction(function () { subtyping(subHeader4) })
-                .pauseFor(pauseDelay)
-                .callFunction(function () { subdelete() })
-                .pauseFor(subHeader4.length * deleteSpeed)
-                .deleteAll(1)
-
-                .typeString(header5)
-                .callFunction(function () { finaltype() })
-                .start();
-        }
-
-        typing();
-    </script>
+@keyframes animated-cursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
+</style>
 
 <body>
 
